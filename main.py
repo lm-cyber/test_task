@@ -1,5 +1,6 @@
 from model import poly_model
 from setting import DatabaseConnection
+import logging
 
 
 def main():
@@ -9,8 +10,8 @@ def main():
 
     y_pred, params = poly_model(y, x, degree)
 
-    print("Вектор предсказанных значений:", y_pred)
-    print("Вектор параметров модели:", params)
+    logging.info("Вектор предсказанных значений:" + str(y_pred))
+    logging.info("Вектор параметров модели:" + str(params))
 
 
 if __name__ == '__main__':

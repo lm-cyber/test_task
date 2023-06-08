@@ -1,2 +1,6 @@
 venv
 .idea
+view.py
+__pycache__/
+test.py
+.pytest_cache/

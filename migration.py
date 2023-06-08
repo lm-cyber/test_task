@@ -1,5 +1,5 @@
 import psycopg2
-from psycopg2 import sql
+from setting import DatabaseConnection
 
 
 def create_tables():
@@ -26,8 +26,7 @@ def create_tables():
 
     conn = None
     try:
-        conn = psycopg2.connect(host="localhost", database="test", user="yt",
-                                password="yt")
+        conn = DatabaseConnection.get_connection()
         cur = conn.cursor()
 
         for command in commands:
@@ -38,7 +37,7 @@ def create_tables():
         print(error)
     finally:
         if conn is not None:
-            conn.close()
+            DatabaseConnection.close_connection()
 
 
 create_tables()

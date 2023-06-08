@@ -1,14 +1,14 @@
-import psycopg2
 import json
 from datetime import datetime
 from functools import wraps
+
+from setting import DatabaseConnection
 
 
 def db_logger(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        conn = psycopg2.connect(host="localhost", database="test", user="yt",
-                                password="yt")
+        conn = DatabaseConnection.get_connection()
         cur = conn.cursor()
 
         try:
@@ -38,7 +38,6 @@ def db_logger(func):
         finally:
             conn.commit()
             cur.close()
-            conn.close()
 
         return result
 

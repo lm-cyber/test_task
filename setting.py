@@ -1,6 +1,7 @@
 import psycopg2
 import os
 
+
 class DatabaseConnection:
     _instance = None
 
@@ -15,7 +16,8 @@ class DatabaseConnection:
     @staticmethod
     def get_instance():
         if DatabaseConnection._instance is None:
-            DatabaseConnection._instance.connection = DatabaseConnection.get_connection()
+            DatabaseConnection._instance.connection =\
+                DatabaseConnection.get_connection()
         return DatabaseConnection._instance
 
     @staticmethod
